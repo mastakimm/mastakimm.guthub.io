@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Titre de la page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+    <script>document.addEventListener('DOMContentLoaded', function() {
+        const menuHamburger = document.querySelector('.menuhamburger');
+        const navbar = document.getElementById('navbar');
+
+        menuHamburger.addEventListener('click', function() {
+            const expanded = this.getAttribute('aria-expanded') === 'true' || false;
+            this.setAttribute('aria-expanded', !expanded);
+
+            if (!expanded) {
+                navbar.classList.remove('active');
+            } else {
+                navbar.classList.add('active');
+            }
+        });
+
+        window.addEventListener('click', function(event) {
+            if (!menuHamburger.contains(event.target) && !navbar.contains(event.target)) {
+                menuHamburger.setAttribute('aria-expanded', 'false');
+                navbar.classList.remove('active');
+            }
+        });
+    });
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            color: rgb(128, 128, 128, 1);
+        }
+
+        header {
+
+            display: flex;
+            background-image: url("assets/misc/grille.png");
+            justify-content: space-around;
+            align-items: center;
+            padding: 0 10%;
+            height: 25vh;
+        }
+
+        header #logo {
+
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .menuhamburger {
+            display:none;
+        }
+
+        nav {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            margin-top: 2vh;
+            margin-bottom: 2vh;
+        }
+
+        nav .submenu {
+            margin: 0;
+            padding: 0;
+            margin-top: 0.8vh;
+            margin-left: 0.5vh;
+        }
+
+        .submenu li {
+            margin: 0.2vh 0;
+            font-family: "Droid Sans";
+        }
+
+        .wrap {
+
+            padding: 1vh;
+            width: 9rem;
+        }
+
+        .longerwrap {
+
+            width: 12rem;
+            padding: 1vh;
+        }
+
+        .title {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .wrap .title {
+            padding: 0.5vh;
+        }
+
+        .longerwrap .title {
+            padding: 0.5vh;
+        }
+
+        .video {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2vh 0;
+        }
+
+
+        .hook {
+
+            display: flex;
+            height: 10vh;
+            background-image: url("assets/misc/grille.png");
+            background-attachment: fixed;
+            background-size: auto, cover;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            padding-top: 1.2vh;
+        }
+
+        #hookP {
+            font-family: "Droid Serif";
+        }
+
+
+        .topics h4 {
+            color: orange;
+            font-family: 'Oswald', sans-serif;
+            font-weight: bold;
+        }
+
+        .topics .dateDePublication {
+            font-style: italic;
+            font-size: 0.8rem;
+            color: rgb(128, 128, 128, 0.6)
+        }
+
+        .contenuArticle {
+            margin-top: 1vh;
+        }
+
+        .lirePlus {
+            margin-bottom: 5vh;
+            font-style: italic;
+            font-family: "Droid Sans";
+        }
+
+        .imageAccrobranche {
+            width: 30%;
+            border: 1px solid rgb(128, 128, 128, 0.1);
+            padding: 1.1vh;
+            margin-bottom: 1.3vh;
+            margin-right: 0.8vh;
+        }
+
+        #topics {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url("assets/misc/grille.png");
+
+        }
+
+        .label {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: rgb(128, 128, 128, 0.7);
+
+        }
+
+        .date {
+            font-size: 0.9rem;
+            font-family: "Droid Serif";
+            font-style: italic;
+        }
+
+        footer {
+
+            display: flex;
+            height: 10vh;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .informations, .dernierBillet, .DernierCommentaire, .blabla {
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        .contact li {
+            font-size: 0.9rem;
+        }
+
+        .copyright, .logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5vh;
+            height: 100%;
+        }
+
+        @media (max-width: 1250px) {
+            header {
+                height: 17vh;
+            }
+
+            .navbar {
+                position: fixed;
+                inset: 0 0 0 40%;
+                background: black;
+                z-index: 100;
+                height: 100%;
+                flex-direction: column;
+                padding: min(10vh, 50rem)2em;
+                transform: translateX(100%);
+                transition: 350ms ease-out;
+            }
+
+            .navbar.active {
+                display: block;
+                transform: translateX(0%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .menuhamburger {
+                position: absolute;
+                background: url(assets/misc/menuhamburger.png);
+                background-repeat: no-repeat;
+                width: 5em;
+                aspect-ratio: 1;
+                top: 4%;
+                right: 2rem;
+                z-index: 1000;
+                border: none;
+                display: block;
+                cursor: pointer;
+            }
+
+            #logo {
+                position: absolute;
+                top: 2%;
+                left: 2rem;
+            }
+        }
+    </style>
+</head>
+<header>
+    <img src="assets/misc/logo.png" alt="logo" id="logo">
+    <button class="menuhamburger" aria-controls="navbar" aria-expanded="false" style="z-index: 1000" ><span class="sr-only"></span>
+    </button>
+    <nav>
+        <div id="navbar" data-visible="false" class="navbar">
+            <div class="wrap">
+                <div class="title" style="border-bottom: 0.7vh solid orangered">HOTELS</div>
+                <ul class="submenu">
+                    <li>Chambres</li>
+                    <li>Lofts</li>
+                    <li>Appartements</li>
+                </ul>
+            </div>
+            <div class="longerwrap">
+                <div class="title" style="border-bottom: 0.7vh solid orange">RESTAURANTS</div>
+                <ul class="submenu">
+                    <li>Gastronomiques</li>
+                    <li>Fast-foods</li>
+                    <li>Autres saveurs</li>
+                </ul>
+            </div>
+            <div class="wrap">
+                <div class="title" style="border-bottom: 0.7vh solid lightgreen">SERVICES</div>
+                <ul class="submenu">
+                    <li>Sauna</li>
+                    <li>Hammam</li>
+                    <li>Jacuzzi</li>
+                </ul>
+            </div>
+            <div class="wrap">
+                <div class="title" style="border-bottom: 0.7vh solid blue">ACTIVITES</div>
+                <ul class="submenu">
+                    <li>Accrobranche</li>
+                    <li>Bowling</li>
+                    <li>Golf privé</li>
+                </ul>
+            </div>
+            <div class="longerwrap">
+                <div class="title" style="border-bottom: 0.7vh solid purple">PLUS</div>
+                <ul class="submenu">
+                    <li>Baby sitting</li>
+                    <li>Garde d'animaux</li>
+                    <li>Ménage</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<body>
+    <div class="separateur" style="margin-top: 1vh; border: 1px solid rgb(128, 128, 128, 0.1)"></div>
+    <div class="image-fluid video">
+        <iframe width="700em" height="400em" src="https://www.youtube.com/embed/YY3GpU4YAlA" title="HOTEL PRESENTATION WITH POWERPOINT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <div class="separateur" style="margin-bottom: 1vh; border: 1px solid rgb(128, 128, 128, 0.1)"></div>
+    <div class="hook">
+        <p id="hookP" style="text-align: center; font-style: italic ">
+            Services haut de gamme et confort 5 étoiles: notre compagnie est fière de vous accueillir !
+        </p>
+    </div>
+    <div class="separateur" style="margin-bottom: 3vh; margin-top: 1vh; border: 1px solid rgb(128, 128, 128, 0.1)"></div>
+    <div class="container">
+        <div class="topics">
+            <div class="row">
+                <div class="col-lg-3 col-12 golf">
+                    <h4 class="titreArticles">GOLF</h4>
+                    <p class="dateDePublication">Publié le 10-12-2024</p>
+                    <img src="assets/misc/golf.jpg" alt="balles de golf" class="golfImage">
+                    <p class="contenuArticle">Le golf est ouvert 24h/24h, venez faire le parcours quand vous souhaitez ! Un mini-golf est également disponible...</p>
+                    <br>
+                    <p class="lirePlus">Lire plus -></p>
+                </div>
+                <div class="col-lg-3 col-12">
+                    <div class="row">
+                        <div class="col-12 accrobranche">
+                            <h4 class="titreArticles">ACCROBRANCHE</h4>
+                            <p class="dateDePublication">Publié le 11-11-2023</p>
+                            <p class="contenuArticle">Plusieurs parcours aventures dans les arbres jusqu'à plus de 20 mètres du sol ! Venez essayer la plus grande tyrolienne d'europe...</p>
+                            <br>
+                            <p class="lirePlus">Lire plus -></p>
+                        </div>
+                        <div class="col-12 fastfood">
+                            <h4 class="titreArticles">FAST FOODS</h4>
+                            <p class="dateDePublication">Publié le 26-01-2026</p>
+                            <p class="contenuArticle">Venez déguster nos Big Burgers, les meilleurs de Paris. Découvrez comment ils sont fait, choisissez vous-mêmes les ingrédients...</p>
+                            <br>
+                            <p class="lirePlus">Lire plus -></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 commentaires">
+                    <h4 class="titreArticles">COMMENTAIRES</h4>
+                    <p class="dateDePublication">Publié le 04-12-2025</p>
+                    <p class="contenuArticle">Super expérience, le sauna est très agréable, le cadre est magnifique, la litterie est confortable, les restaurants sont délicieux, je reviendrai l'an prochain !</p>
+                    <br>
+                    <p class="lirePlus">Lire plus -></p>
+                    <img src="assets/misc/accrobranche.jpg" alt="accrobranche" class="imageAccrobranche">
+                    <img src="assets/misc/accrobranche.jpg" alt="accrobranche" class="imageAccrobranche">
+                    <img src="assets/misc/accrobranche.jpg" alt="accrobranche" class="imageAccrobranche">
+                    <img src="assets/misc/accrobranche.jpg" alt="accrobranche" class="imageAccrobranche">
+                    <img src="assets/misc/accrobranche.jpg" alt="accrobranche" class="imageAccrobranche">
+                    <img src="assets/misc/accrobranche.jpg" alt="accrobranche" class="imageAccrobranche">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separateur" style="margin-bottom: 1vh; margin-top: 4vh; border: 1px solid rgb(128, 128, 128, 0.1)"></div>
+    <div class="container-fluid" id="topics" style="height: auto">
+        <div class="container" style="padding-top: 2vh; padding-bottom: 2vh">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 contact">
+                    <h4 class="label" style="margin-bottom: 2vh">NOUS CONTACTER</h4>
+                    <ul class="informations">
+                        <li id="adresse"><img src="assets/misc/accueil_icone.png" alt="accueil icone">42 route des poneys</li>
+                        <li id="complementd'adresse" style="margin-top: -0.7vh; margin-bottom: 0.6vh; margin-left: 2.5vh"> 07007, Jardiland</li>
+                        <li id="téléphone" style="margin-bottom: 0.6vh"><img src="assets/misc/telephone_icone.png" alt="telephone icone">+1 234 567 89 01</li>
+                        <li id="emailContact" style="margin-bottom: 0.6vh; text-decoration: underline"><img src="assets/misc/mail_icone.png" alt="mail icone">contact@hotels.com</li>
+                        <li id="supportEmail" style="margin-bottom: 0.6vh; text-decoration: underline"><img src="assets/misc/aide_icone.png" alt="aide icone">support@hotels.com</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 lastinformation">
+                <h4 class="label">DERNIER BILLET</h4>
+                    <ul class="dernierBillet">
+                        <li class="date">15 Sep 2019</li>
+                        <li id="garde" style="font-weight: bold">Garde d'animaux</li>
+                        <li class="description" style="margin-top: 1vh">Nouveau service au sein de notre compagnie, laissez votre toutou une journée pour vous reposer....</li>
+                        <li id="commentaires" style="text-decoration: underline; margin-top: 0.7vh; margin-bottom: 2.5vh">6 commentaires</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 lastcomment">
+                    <h4 class="label">DERNIER COMMENTAIRE</h4>
+                    <ul class="DernierCommentaire">
+                        <li class="date">01 Mar 2020</li>
+                        <li id="remerciements" style="font-weight: bold; font-size: 1rem">Merci à toute l'équipe</li>
+                        <li class="description" style="margin-top: 1vh">L'accrobranche est vraiment génial, je le recommande pour les enfants qui vont très bien s'amuser en grimpant dans les arbres...</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 blablas">
+                    <h4 class="label">BLABLALAND</h4>
+                    <ul class="blabla">
+                        <li class="description">Ce texte ne sert à rien mais il est important de le recopier parce que c'est demandé dans le sujet, bon courage ! :)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="separateur" style="margin-top: 1vh; border: 1px solid rgb(128, 128, 128, 0.1)"></div>
+</body>
+<footer>
+    <div class="col-6 copyright">
+        <ul>
+            <li style="font-size: 1.2vh">Presse   |   Blog   |   Nous contacter   |   A propos</li>
+            <li id="copyright" style="font-size: 1.2vh; margin-top: 0.5vh">Copyright © 2014 ABC Compagnie.</li>
+        </ul>
+    </div>
+    <div class="col-6 logos">
+        <img src="assets/misc/rss.png" alt="rss logo">
+        <img src="assets/misc/email.png" alt="email logo">
+        <img src="assets/misc/twitter.png" alt="twitter logo">
+        <img src="assets/misc/facebook.png" alt="facebook logo">
+        <img src="assets/misc/pinterest.png" alt="pinterest logo">
+        <img src="assets/misc/google.png" alt="google logo">
+    </div>
+</footer>
+</html>
